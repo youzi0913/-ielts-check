@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思时间表打卡</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
+body{background:#f6f8fa;padding:16px;color:#24292f}
+.container{max-width:700px;margin:0 auto}
+h1{text-align:center;margin-bottom:20px;font-size:24px}
+.day-card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 1px 3px #0000001a}
+.day-title{font-weight:bold;font-size:18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.task-item{display:flex;align-items:center;gap:10px;margin:8px 0;padding:6px;border-radius:8px}
+.task-item input[type="checkbox"]{width:20px;height:20px}
+.checked{text-decoration:line-through;color:#828282}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>雅思每日打卡表</h1>
+<div class="day-card">
+<div class="day-title">Day1 <span id="day1-count">0/4</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(1,this)"><span>背雅思单词 50个</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(1,this)"><span>阅读精读1篇</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(1,this)"><span>听力精听1个section</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(1,this)"><span>口语素材练习15分钟</span></div>
+</div>
+<div class="day-card">
+<div class="day-title">Day2 <span id="day2-count">0/4</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(2,this)"><span>背雅思单词 50个</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(2,this)"><span>阅读精读1篇</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(2,this)"><span>听力精听1个section</span></div>
+<div class="task-item"><input type="checkbox" onchange="updateCount(2,this)"><span>写作小作文仿写</span></div>
+</div>
+</div>
+<script>
+function updateCount(day,cb){
+const card=cb.closest(".day-card");
+const tasks=card.querySelectorAll(".task-item input[type='checkbox']");
+let done=0;
+tasks.forEach(c=>{if(c.checked) done++});
+document.getElementById(`day${day}-count`).innerText=`${done}/${tasks.length}`;
+cb.nextElementSibling.classList.toggle("checked",cb.checked);
+}
+</script>
+</body>
+</html>add index.html
